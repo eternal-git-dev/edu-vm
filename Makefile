@@ -27,13 +27,10 @@ install:
 	$(POETRY) install
 
 install-pip:
-	@echo "Creating requirements.txt..."
-	powershell -Command "echo 'pyside6>=6.10.1,<7.0.0' > requirements.txt"
-	powershell -Command "echo 'Flask>=3.0.0' >> requirements.txt"
-	powershell -Command "echo 'PyYAML>=6.0.3' >> requirements.txt"
-	@echo "Updating pip..."
+	echo "pyside6>=6.10.1,<7.0.0" > requirements.txt
+	echo "Flask>=3.0.0" >> requirements.txt
+	echo "PyYAML>=6.0.3" >> requirements.txt
 	python -m pip install --upgrade pip
-	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 
 
