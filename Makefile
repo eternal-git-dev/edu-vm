@@ -1,4 +1,3 @@
-# Makefile (Poetry + Flask)
 POETRY := poetry
 PY := $(POETRY) run python
 FLASK := $(POETRY) run flask
@@ -27,13 +26,10 @@ install:
 	$(POETRY) install
 
 install-pip:
-	@echo "Creating requirements.txt..."
-	powershell -Command "echo 'pyside6>=6.10.1,<7.0.0' > requirements.txt"
-	powershell -Command "echo 'Flask>=3.0.0' >> requirements.txt"
-	powershell -Command "echo 'PyYAML>=6.0.3' >> requirements.txt"
-	@echo "Updating pip..."
+	echo "pyside6>=6.10.1,<7.0.0" > requirements.txt
+	echo "Flask>=3.0.0" >> requirements.txt
+	echo "PyYAML>=6.0.3" >> requirements.txt
 	python -m pip install --upgrade pip
-	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 
 
@@ -43,7 +39,6 @@ run-web:
 run-gui:
 	$(RUN) -m gui
 
-# Export requirements.txt for environments that need it
 export-requirements:
 	$(POETRY) export -f requirements.txt --output requirements.txt --without-hashes || \
 		{ echo "If using an older poetry version, install 'poetry-plugin-export' or upgrade poetry."; exit 1; }
