@@ -1,0 +1,4 @@
+program:
+  - cmd: SQRT
+    reg: 12
+    addr: 610
